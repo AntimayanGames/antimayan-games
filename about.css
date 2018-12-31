@@ -32,8 +32,8 @@ ul {
   }
   
   .active {
-    background-color: black;
-    color: rgb(0, 251, 255);
+    background-color: rgb(0, 251, 255);
+    color: black;
   }
 
   #titleli {
