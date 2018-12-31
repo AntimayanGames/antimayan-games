@@ -5,3 +5,47 @@ div {
     height: 90%;
     width: 99%;
 }
+body {
+    background: lightcyan;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   }
+
+ul {
+    position: relative;
+    
+    width: 100%;
+    list-style-type: none;
+    margin-top: 0%;
+    margin-left: 0%;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+.active {
+    background-color: rgb(0, 251, 255);
+    color: black;
+  }
+  
+  #titleli {
+    text-align: center;
+    position: fixed;
+    top: 14px;
+    left: 40%;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+  }
+  
