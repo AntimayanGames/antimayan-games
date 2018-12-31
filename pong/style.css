@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+
+    /* This centers our sketch horizontally. */
+    justify-content: center;
+
+    /* This centers our sketch vertically. */
+    align-items: center;
+
+    font-family: 'Comic Sans MS';
+	font-style: italic;
+
+    /* W3C */
+	background: linear-gradient(top, #fcf528 16%,#28fc28 32%,#28fcf8 50%,#ff28fb 82%,#ff3232 100%);
+
+	/* Firefox */
+	background: -moz-linear-gradient(top, #fcf528 16%, #28fc28 32%, #28fcf8 50%, #ff28fb 82%, #ff3232 100%);
+
+	/* Chrome,Safari4+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(16%,#fcf528), color-stop(32%,#28fc28), color-stop(50%,#28fcf8),  color-stop(82%,#ff28fb));
+
+	/* Chrome10+,Safari5.1+ */
+	background: -webkit-linear-gradient(top,#fcf528 16%,#28fc28 32%,#28fcf8 50%,#f573f3e7 82%);
+
+}
+
+h1 {
+	position: absolute;
+	top: -50px;
+    left: 10px;
+    width: 20px;
+	z-index: 50;
+    font-size: 60px;
+}
+
+h2 {
+    position: absolute;
+	top: 150px;
+    left: 10px;
+    width: 20px;
+	z-index: 50;
+    font-size: 30px;
+    align-items: center;
+}
+
+h3 {
+    position: absolute;
+	top: 400px;
+    left: 10px;
+    width: 150px;
+	z-index: 50;
+    font-size: 20px;
+    align-items: center;
+}
+
+h4 {
+    position: absolute;
+	top: -50px;
+    right: 10px;
+    width: 150px;
+	z-index: 50;
+    font-size: 40px;
+    align-items: center;
+}
+
+h5 {
+    position: absolute;
+	top: 60px;
+    right: 10px;
+    width: 150px;
+	z-index: 50;
+    font-size: 40px;
+    align-items: center;
+}
