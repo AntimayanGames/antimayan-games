@@ -75,3 +75,11 @@ h5 {
     font-size: 40px;
     align-items: center;
 }
+h6 {
+    position: absolute;
+	top: 550px;
+    left: 10px;
+    width: 100px;
+	z-index: 50;
+    font-size: 15px;
+}
