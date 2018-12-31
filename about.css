@@ -1,27 +1,19 @@
-div {
-    position: absolute;
-    padding: 0px;
-    margin: 0px;
-    margin-top: 50px;
-    height: 90%;
-    width: 99%;
-}
 body {
     background: lightcyan;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   }
+}
 
 ul {
     position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
+    top: 0;
+    left: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
   
   li {
     float: left;
@@ -35,11 +27,15 @@ ul {
     text-decoration: none;
   }
   
-.active {
-    background-color: rgb(0, 251, 255);
-    color: black;
+  li a:hover:not(.active) {
+    background-color: #111;
   }
   
+  .active {
+    background-color: black;
+    color: rgb(0, 251, 255);
+  }
+
   #titleli {
     text-align: center;
     position: fixed;
@@ -50,4 +46,3 @@ ul {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
   }
-  
