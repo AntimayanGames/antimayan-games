@@ -2,6 +2,7 @@ div {
     position: absolute;
     padding: 0px;
     margin: 0px;
+    margin-top: 50px;
     height: 90%;
     width: 99%;
 }
@@ -11,15 +12,15 @@ body {
    }
 
 ul {
-    position: relative;
-    
-    width: 100%;
-    list-style-type: none;
-    margin-top: 0%;
-    margin-left: 0%;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
   
   li {
@@ -42,7 +43,7 @@ ul {
   #titleli {
     text-align: center;
     position: fixed;
-    top: 14px;
+    top: 8px;
     left: 40%;
     font-size: 30px;
     font-weight: bold;
