@@ -1,6 +1,7 @@
-head {
+div {
     position: absolute;
     padding: 0px;
     margin: 0px;
-    height: 100vh;
+    height: 90%;
+    width: 99%;
 }
