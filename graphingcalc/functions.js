@@ -51,14 +51,14 @@ function drawGraphs() {
         stroke(255, 0, 255);
         point(solution1X1*zoom.value()*zoomLevels[zoomLevel], 0);
         strokeWeight(1);
-        staticDisplay(0, 255, 0, 255, 'Solution: (' + roundNum(solution1X1,2) + ', ' + '0)');
+        staticDisplay(0, 255, 0, 255, 'x-int: (' + roundNum(solution1X1,2) + ', ' + '0)');
 
         var solution1X2 = QuadFormNeg(a.value(), b.value(), c.value());
         strokeWeight(7);
         stroke(255, 100, 0);
         point(solution1X2*zoom.value()*zoomLevels[zoomLevel], 0);
         strokeWeight(1);
-        staticDisplay(-30, 255, 100, 0, 'Solution: (' + roundNum(solution1X2,2) + ', ' + '0)');
+        staticDisplay(-30, 255, 100, 0, 'x-int: (' + roundNum(solution1X2,2) + ', ' + '0)');
     }
     if (showVertex.checked() == true) {
         strokeWeight(7);
@@ -77,7 +77,9 @@ function drawGraphs() {
         beginShape();
         for (x = -width*1.5; x < width*1.5; x++) {
             noFill();
+            
             vertex(x*zoomLevels[zoomLevel], Calc(x, a2.value()/zoom.value(), b2.value(), c2.value()*zoom.value())*zoomLevels[zoomLevel]);
+            
         }
         endShape();
 
@@ -99,14 +101,14 @@ function drawGraphs() {
             stroke(255, 255, 0);
             point(solution2X1*zoom.value()*zoomLevels[zoomLevel], 0);
             strokeWeight(1);
-            staticDisplay(60, 255, 255, 0, 'Solution: (' + roundNum(solution2X1, 2) + ', ' + '0)');
+            staticDisplay(60, 255, 255, 0, 'x-int: (' + roundNum(solution2X1, 2) + ', ' + '0)');
             
             let solution2X2 = QuadFormNeg(a2.value(), b2.value(), c2.value());
             strokeWeight(7);
             stroke(0, 255, 255);
             point(solution2X2*zoom.value()*zoomLevels[zoomLevel], 0);
             strokeWeight(1);
-            staticDisplay(30, 0, 255, 255, 'Solution: (' + roundNum(solution2X2, 2) + ', ' + '0)');
+            staticDisplay(30, 0, 255, 255, 'x-int: (' + roundNum(solution2X2, 2) + ', ' + '0)');
             }
 
     }
@@ -140,7 +142,7 @@ function Calc(x, av, bv, cv) {
     // bv = b.value();
     // cv = c.value()*zoom.value();
      
-     return(-(av*x*x) - bv*x - cv);
+     return(-av*Math.pow(x, p.value()) - bv*x - cv);
          
  }
 

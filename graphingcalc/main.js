@@ -1,12 +1,13 @@
 
-
+let width = 800;
+let height = 800;
 let offsetX = 400;
 let offsetY = 400;
 let mapFactor = 1;
 var zoom, showSolutions, zoomReset, a, b, c, xydisplay, showSliders;
 let atext, atext2, btext, btext2, ctext, ctext2;
 let mouseIsDown = false;
-
+var xdompos = 1000;
 
 let startX, startY;
 let netPanningX = 400, netPanningY = 400;
@@ -15,10 +16,11 @@ let zoomLevel = 3;
 let zoomLevels = [.2, .4, .5 , 1, 2, 2.5, 4];
 
 
-let doDrawGraph = false;
+
+let doDrawGraph =true;
 
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(width, height);
     
     
     background(255);
@@ -47,12 +49,12 @@ function draw() {
     stroke('blue');
     
     
-    text('equation y = ' + a.value() + 'x' + '^2' + ' + ' +  b.value()  + 'x ' + '+ ' + c.value(), width-260, 30);
+    text('equation y = ' + a.value() + 'x' + '^' + p.value() + ' + ' +  b.value()  + 'x ' + '+ ' + c.value(), width-260, 30);
     //console.log(zoom.value());    
     if(graph2.checked() == true) {
         stroke('red');
         fill('red');
-        text('equation y = ' + a2.value() + 'x' + '^2' + ' + ' +  b2.value()  + 'x ' + '+ ' + c2.value(), width-260, 55);
+        text('equation y = ' + a2.value() + 'x' + '²' + ' + ' +  b2.value()  + 'x ' + '+ ' + c2.value(), width-260, 55);
     }
     
     noFill();
@@ -63,7 +65,7 @@ function draw() {
     drawGraphs();
     }
     coolMouse();
-    console.log(zoomLevel);
+    //console.log(zoomLevel);
     
     zoomP.html('Scale: ' + zoom.value());
     //zoomReset.mouseIsPressed(zoom.value(100));
@@ -129,7 +131,7 @@ function mouseDragged() {
 }
 function setupCheckbox() {
     showSliders = createCheckbox('Replace text fields with sliders', false);
-    showSliders.position(1180-200, 100-15);
+    showSliders.position(xdompos, 100-15);
 }
 
 function changedInputs() {
@@ -165,53 +167,60 @@ function setupInputs1() {
     
 
     zoom = createSlider(0, 400, 100, 2);
-    zoom.position(20,80);
+    zoom.position(20,20);
     zoom.style('width', '200px');
     
     zoomP = createP('');
-    zoomP.position(25, 85);
+    zoomP.position(25, 25);
     
     
     //zoomReset.mousePressed(resetzoom());
     
 
-    showSolutions = createCheckbox('Show solutions', false);
-    showSolutions.position(1180-200, 100);
+    showSolutions = createCheckbox('Show x-ints', false);
+    showSolutions.position(xdompos, 100);
     showVertex = createCheckbox('Show vertex (first equation)', false);
-    showVertex.position(1180-200, 115);
+    showVertex.position(xdompos, 115);
     
     
-    var off = 200;
+    var off = 100;
+    
 
     atext = createP('a:');
-    atext.position(1180-200, 385-off);
+    atext.position(xdompos, 385-off);
 
     btext = createP('b (slope if a=0):');
-    btext.position(1180-291, 365-off-5);
+    btext.position(xdompos - 91, 365-off-5);
 
     ctext = createP('c:');
-    ctext.position(1180-200, 345-off-10);
+    ctext.position(xdompos, 345-off-10);
+
+    ptext = createP('Power:');
+    ptext.position(xdompos-35, 345-off-40);
     
     if (showSliders.checked() == false) {
         a = createInput('0', 'number');
-        a.position(1200-200, 400-off);
+        a.position(xdompos+15, 400-off);
         a.style('100px');
 
         b = createInput('0', 'number');
-        b.position(1200-200, 380-off-5);
+        b.position(xdompos+15, 380-off-5);
 
         c = createInput('0', 'number');
-        c.position(1200-200, 360-off-10);
+        c.position(xdompos+15, 360-off-10);
+
+        p = createInput('2', 'number');
+        p.position(xdompos+15, 360-off-40);
     } else if (showSliders.checked() == true) {
         a = createSlider(-50, 50, 0, .1);
-        a.position(1200-200, 400-off);
+        a.position(xdompos+15, 400-off);
         //a.style('100px');
 
         b = createSlider(-50, 50, 0, .1);
-        b.position(1200-200, 380-off-5);
+        b.position(xdompos+15, 380-off-5);
 
         c = createSlider(-10, 10, 0, 1);
-        c.position(1200-200, 360-off-10);
+        c.position(xdompos+15, 360-off-10);
     } 
 
 
@@ -219,46 +228,46 @@ function setupInputs1() {
     //mode.position(1200, 420);
 
     xydisplay = createCheckbox('Show coordinates next to pointer', false);
-    xydisplay.position(1175-200, 440+400);
+    xydisplay.position(xdompos, 440+400);
   
 }
 
 function setupInputs2() {
 
     graph2 = createCheckbox('Graph 2nd function', false);
-    graph2.position(1175-200, 300);
+    graph2.position(xdompos, 400);
 
-        var off2 = 350;
+        var off2 = 450;
         atext2 = createP('a:');
-        atext2.position(1180-200, off2+25);
+        atext2.position(xdompos, off2+25);
     
         btext2 = createP('b (slope if a=0):');
-        btext2.position(1180-291, off2+5-5);
+        btext2.position(xdompos - 91, off2+5-5);
     
         ctext2 = createP('c:');
-        ctext2.position(1180-200, off2-15-10);
+        ctext2.position(xdompos, off2-15-10);
 
     if(showSliders.checked() == false) {
     
         a2 = createInput('0', 'number');
-        a2.position(1200-200, off2+40);
+        a2.position(xdompos+15, off2+40);
         a2.style('100px');
     
         b2 = createInput('0', 'number');
-        b2.position(1200-200, off2+20-5);
+        b2.position(xdompos+15, off2+20-5);
     
         c2 = createInput('0', 'number');
-        c2.position(1200-200, off2-10);
+        c2.position(xdompos+15, off2-10);
     } else if(showSliders.checked() == true) {
         a2 = createSlider(-50, 50, 0, .1);
-        a2.position(1200-200, off2+40);
+        a2.position(xdompos+15, off2+40);
         a2.style('100px');
     
         b2 = createSlider(-50, 50, 0, .1);
-        b2.position(1200-200, off2+20-5);
+        b2.position(xdompos+15, off2+20-5);
     
         c2 = createSlider(-10, 10, 0, 1);
-        c2.position(1200-200, off2-10);
+        c2.position(xdompos+15, off2-10);
     }
     
    
