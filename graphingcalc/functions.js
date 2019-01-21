@@ -26,9 +26,9 @@ function drawGraphs() {
     
 
     beginShape();
-    for (i = -width-offsetX; i < width+offsetX; i++) {
+    for (i = -width*1.5; i < width*1.5; i++) {
         noFill();
-        vertex(i*zoomLevels[zoomLevel], Calc(i, a.value()/zoom.value(), b.value(), c.value()*zoom.value())*zoomLevels[zoomLevel]);
+        vertex(i*zoomLevels[zoomLevel], -Calc(i, a.value()/zoom.value(), b.value(), c.value()*zoom.value())*zoomLevels[zoomLevel]);
     }
     endShape();
     
@@ -36,12 +36,12 @@ function drawGraphs() {
     var zeroY = Calc(0, a.value()/zoom.value(), b.value(), c.value()*zoom.value());
     strokeWeight(5);
     stroke(100, 100, 100);
-    point(0, zeroY*zoomLevels[zoomLevel]);
+    point(0, -zeroY*zoomLevels[zoomLevel]);
     strokeWeight(1);
     stroke(100);
     fill(100);
     
-    text('y-int ' + roundNum(-zeroY/zoom.value(), 3), 5, (zeroY*zoomLevels[zoomLevel])-10);
+    text('y-int ' + roundNum(zeroY/zoom.value(), 3), 5, (-zeroY*zoomLevels[zoomLevel])-10);
 
 
 
@@ -78,7 +78,7 @@ function drawGraphs() {
         for (x = -width*1.5; x < width*1.5; x++) {
             noFill();
             
-            vertex(x*zoomLevels[zoomLevel], Calc(x, a2.value()/zoom.value(), b2.value(), c2.value()*zoom.value())*zoomLevels[zoomLevel]);
+            vertex(x*zoomLevels[zoomLevel], -Calc(x, a2.value()/zoom.value(), b2.value(), c2.value()*zoom.value())*zoomLevels[zoomLevel]);
             
         }
         endShape();
@@ -87,11 +87,11 @@ function drawGraphs() {
         var zeroY2 = Calc(0, a2.value()/zoom.value(), b2.value(), c2.value()*zoom.value());
         stroke(100, 100, 100);
         strokeWeight(5);
-        point(0, zeroY2*zoomLevels[zoomLevel]);
+        point(0, -zeroY2*zoomLevels[zoomLevel]);
         strokeWeight(1);
         stroke(100);
         fill(100);
-        text('y-int ' + roundNum(-zeroY2/zoom.value(), 3), 5, (zeroY2*zoomLevels[zoomLevel])-10);
+        text('y-int ' + roundNum(zeroY2/zoom.value(), 3), 5, (-zeroY2*zoomLevels[zoomLevel])-10);
 
 
         if (showSolutions.checked() == true) {
@@ -142,7 +142,8 @@ function Calc(x, av, bv, cv) {
     // bv = b.value();
     // cv = c.value()*zoom.value();
      
-     return(-av*Math.pow(x, p.value()) - bv*x - cv);
+     return(av*Math.pow(x, p.value()) + bv*x + cv);
+    
          
  }
 

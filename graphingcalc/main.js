@@ -14,8 +14,9 @@ let netPanningX = 400, netPanningY = 400;
 
 let zoomLevel = 3; 
 let zoomLevels = [.2, .4, .5 , 1, 2, 2.5, 4];
+let sups = ['0','¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'];
 
-
+let disFromCenterX;
 
 let doDrawGraph =true;
 
@@ -41,7 +42,7 @@ function draw() {
     
     
     background(250);
-    
+    disFromCenterX = Math.abs(offsetX - 400);
     strokeWeight(1);
     fill('blue');
     textFont('Helvetica');
@@ -49,12 +50,12 @@ function draw() {
     stroke('blue');
     
     
-    text('equation y = ' + a.value() + 'x' + '^' + p.value() + ' + ' +  b.value()  + 'x ' + '+ ' + c.value(), width-260, 30);
+    text('equation y = ' + a.value() + 'x' + sups[p.value()] + ' + ' +  b.value()  + 'x ' + '+ ' + c.value(), width-790, 780);
     //console.log(zoom.value());    
     if(graph2.checked() == true) {
         stroke('red');
         fill('red');
-        text('equation y = ' + a2.value() + 'x' + '²' + ' + ' +  b2.value()  + 'x ' + '+ ' + c2.value(), width-260, 55);
+        text('equation y = ' + a2.value() + 'x' + sups[p.value()] + ' + ' +  b2.value()  + 'x ' + '+ ' + c2.value(), width-790, 750);
     }
     
     noFill();
@@ -65,7 +66,7 @@ function draw() {
     drawGraphs();
     }
     coolMouse();
-    //console.log(zoomLevel);
+    console.log(disFromCenterX);
     
     zoomP.html('Scale: ' + zoom.value());
     //zoomReset.mouseIsPressed(zoom.value(100));
@@ -275,7 +276,7 @@ function setupInputs2() {
 
 } 
 
-function resetzoom() {
+function resetZoom() {
     zoom.value(100);
 }
 
