@@ -1,11 +1,10 @@
 #heading {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-
 body {
- background: lightcyan;
- font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: lightcyan;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 p {
@@ -22,33 +21,39 @@ h2 {
   margin-top: 5%;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 .column1 {
   padding: 20px;
   vertical-align: top;
   display: inline-block;
   text-align: center;
   width: 200px;
+  background-color: #666666;
 }
 .column2 {
- padding: 20px;
- padding-right: 100px;
+  padding: 20px;
+
   vertical-align: top;
   display: inline-block;
   text-align: center;
   width: 200px;
+  background-color: #666666;
 }
 .column3 {
-   vertical-align: top;
+  vertical-align: top;
   position: absolute;
   top: 150px;
-   width: 50%;
-   height: 550px;
-   right: 2%;
- }
- 
+  width: 50%;
+  height: 550px;
+  right: 2%;
+}
 
 img {
-  width:200px;
+  width: 200px;
   height: 100px;
 }
 
