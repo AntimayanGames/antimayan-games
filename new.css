@@ -95,5 +95,6 @@ body {
  * Footer
  */
 .mastfoot {
+  margin-top: 50px;
   color: rgba(255, 255, 255, .5);
 }
