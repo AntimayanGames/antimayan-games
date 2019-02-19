@@ -23,6 +23,9 @@ html,
 body {
   height: 100%;
   background-color: rgb(82, 127, 223);
+  background-image: linear-gradient(to top, #051937, rgb(82, 127, 223), #00b5de, #14eefe, #08ffb1);
+  background-blend-mode: hue;
+  background-repeat: no-repeat;
 }
 
 body {
