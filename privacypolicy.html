@@ -12,7 +12,6 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Jekyll v3.8.5" />
-
     <title>Antimayangames</title>
 
     <link
@@ -37,13 +36,6 @@
         -ms-user-select: none;
         user-select: none;
       }
-      .pdfobject-container {
-        align-content: center;
-        margin-top: 20px;
-        height: 89%;
-        width: 98%;
-        border: 1rem solid rgba(0, 0, 0, 0.1);
-      }
 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
@@ -54,6 +46,7 @@
     <!-- Custom styles for this template -->
     <link href="new.css" rel="stylesheet" />
   </head>
+
   <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
@@ -63,30 +56,30 @@
           </h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link" href="index.html">Home</a>
-            <a class="nav-link" href="about">About</a>
+            <a class="nav-link active" href="#">About</a>
             <a class="nav-link" href="#">Scripture</a>
-            <a class="nav-link active" href="#">AP Exam</a>
+            <a class="nav-link" href="aptest">AP Exam</a>
           </nav>
         </div>
       </header>
-      <div id="aptest"></div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js"></script>
-      <script>
-        PDFObject.embed("img/aptest.pdf", "#aptest");
-      </script>
+
       <main role="main" class="inner cover">
-        <footer class="mastfoot mt-auto">
-          <div class="inner">
-            <p>
-              Antimayangames © 2018, by
-              <a href="https://github.com/AntimayanGames">
-                Gregory Jackson and Cosimos Cendo</a
-              >.
-            </p>
-            <a href="privacypolicy">Privacy Policy</a>
-          </div>
-        </footer>
+        <h4>
+          You don't have to worry about us collecting your info, because we
+          don't know how.
+        </h4>
       </main>
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>
+            Antimayangames © 2018, by
+            <a href="https://github.com/AntimayanGames">
+              Gregory Jackson and Cosimos Cendo</a
+            >.
+          </p>
+          <a href="privacypolicy">Privacy Policy</a>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
