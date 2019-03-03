@@ -21,16 +21,14 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: rgb(255, 110, 52);
+  background-color: rgb(255, 147, 52);
   background-image: linear-gradient(
     to top,
-    rgb(255, 110, 52),
-    #ffbb6e,
-    rgb(250, 166, 177),
-    #ff7d7d,
-    #f84444
+    rgb(255, 147, 52),
+    #f96060,
+    #f51a1a
   );
-  background-blend-mode: hue;
+  background-blend-mode: normal;
   background-repeat: no-repeat;
 }
 
