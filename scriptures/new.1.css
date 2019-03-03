@@ -24,6 +24,7 @@ body {
   background-color: rgb(255, 110, 52);
   background-image: linear-gradient(
     to top,
+    rgb(255, 110, 52),
     #ffbb6e,
     rgb(250, 166, 177),
     #ff7d7d,
