@@ -14,6 +14,18 @@ a:hover {
   border: 0.05rem solid #fff;
 }
 
+
+.btn-primary,
+.btn-primary:focus {
+  color: black;
+  background-color: white;
+  border-color: white;
+}
+.btn-primary:hover {
+  background-color: rgba(208, 208, 208, 0.995);
+  border-color: rgba(208, 208, 208, 0.995);
+  color: black;
+}
 /*
  * Base structure
  */
