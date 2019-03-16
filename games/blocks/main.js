@@ -10,12 +10,16 @@ let dig = 1;
 let p;
 let p2;
 let collisions = 0;
+
 let v;
 let v2 = 0;
 let u1 = v;
 let u2 = 0;
-let m1 = 100;
-let m2 = 1;
+var Minput = document.getElementById("mass");
+var minput = document.getElementById("m2");
+let m1 = parseInt(Minput.value);
+let m2 = parseInt(minput.value);
+let rate = m1/10;
 let click = document.getElementById("click");
 
 
@@ -23,6 +27,7 @@ let click = document.getElementById("click");
 function setup() {
     createCanvas(width, height);
     frameRate(100);
+    
 }
 
 function draw() {
@@ -36,6 +41,16 @@ function draw() {
     //fill(0);
     makeBlock(m1, 100);
     makeBlock2(m2, 50);
+    for (i = 0; i < rate; i++) {
+        calc();
+        
+    }
+    if (bx > 950) {
+        textSize(50);
+        text("Click to restart", width/2, height/2); 
+
+    }
+    
     textAlign(RIGHT);
     textSize(38);
     fill(255);
@@ -50,22 +65,7 @@ function makeBlock(m, size) {
     by = 598 - size;
     //p = m*v;
 
-    if(bx < 100) {
-        bx = 101;
-    } else if(bx2+50 > bx) {
-       click.currentTime = 0;
-       click.play();
-
-       collisions++;
-
-       v = ((m1 - m2)/(m1 + m2))*u1 + ((2*m2)/(m1 + m2)*u2);
-       bx2 = bx - 50;
-       v2 = ((m2 - m1)/(m1 + m2))*u2 + ((2*m1)/(m1 + m2)*u1);
-    }
-    bx2 += v2;
-    bx += v;
-    u1 = v;
-    u2 = v2;
+    
     stroke(255);
     strokeWeight(1);
     textSize(32);
@@ -83,14 +83,7 @@ function makeBlock2(m, size) {
     p2 = m*v2;
     by2 = 598 - size;
 
-    if(bx2 < 50) {
-       // click.pause();
-       click.currentTime = 0;
-        bx2 = 50;
-        v2 = -v2; 
-        collisions++;
-        click.play();
-    }  
+    
     stroke(255);
     strokeWeight(1);
     textSize(32);
@@ -102,13 +95,42 @@ function makeBlock2(m, size) {
     rect(bx2, by2, size, size);
 }
 
+
+function calc() {
+     if(bx2+50 > bx) {
+       click.currentTime = 0;
+       click.play();
+
+       collisions++;
+       
+       v = ((m1 - m2)/(m1 + m2))*u1 + ((2*m2)/(m1 + m2)*u2);
+       bx2 = bx - 50;
+       v2 = ((m2 - m1)/(m1 + m2))*u2 + ((2*m1)/(m1 + m2)*u1);
+    }
+    bx2 += v2;
+    bx += v;
+    u1 = v;
+    u2 = v2;
+    if(bx2 < 50) {
+        // click.pause();
+        click.currentTime = 0;
+         bx2 = 50;
+         v2 = -v2; 
+         collisions++;
+         click.play();
+     }  
+}
+
 function mousePressed() {
+    if(mouseX >= 0 && mouseX <= 800 && mouseY >= 0 && mouseY <= 800) {
     bx = width-400;
     bx2 = width/2;
-    m1 = 100;
-    m2 = 1;
-    v = -1;
+    m1 = parseInt(Minput.value);
+    m2 = parseInt(minput.value);
+    rate = 10000;
+    v = -1/rate;
     v2 = 0;
     collisions = 0;
     init = true;
+    }
 }
