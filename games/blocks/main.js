@@ -17,9 +17,9 @@ let u1 = v;
 let u2 = 0;
 var Minput = document.getElementById("mass");
 var minput = document.getElementById("m2");
-let m1 = parseInt(Minput.value);
-let m2 = parseInt(minput.value);
-let rate = m1/10;
+let m1 = parseFloat(Minput.value);
+let m2 = parseFloat(minput.value);
+let rate = 100;
 let click = document.getElementById("click");
 
 
@@ -97,6 +97,9 @@ function makeBlock2(m, size) {
 
 
 function calc() {
+    if (bx < 100) {
+        bx = 100;
+    }
      if(bx2+50 > bx) {
        click.currentTime = 0;
        click.play();
@@ -122,13 +125,16 @@ function calc() {
 }
 
 function mousePressed() {
-    if(mouseX >= 0 && mouseX <= 800 && mouseY >= 0 && mouseY <= 800) {
+    if(mouseX >= 200 && mouseX <= 800 && mouseY >= 100 && mouseY <= 700) {
     bx = width-400;
     bx2 = width/2;
-    m1 = parseInt(Minput.value);
-    m2 = parseInt(minput.value);
+    m1 = parseFloat(Minput.value);
+    m2 = parseFloat(minput.value);
     rate = 10000;
-    v = -1/rate;
+    if (m1 > 10000000) {
+        rate = m1/1000;
+    }
+    v = -2/rate;
     v2 = 0;
     collisions = 0;
     init = true;
