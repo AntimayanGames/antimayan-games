@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Snake</title>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js></script>
+
+</head>
+
+
+<body>
+    <style>
+        body {
+            margin: 5%;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <script>
+        const scale = 20;
+        const WIDTH = 800;
+        const HEIGHT = 600;
+        let score = 0;
+        let tempX;
+        let tempY;
+
+        let bodyParts = [];
+        let snakeFood;
+
+        let right, left, up, down = false;
+        let start = false;
+        let lose = false;
+
+        function setup() {
+            createCanvas(WIDTH, HEIGHT);
+            frameRate(10);
+            bodyParts.push(new snake(60, 20));
+            bodyParts.push(new snake(40, 20));
+            bodyParts.push(new snake(20, 20));
+            makeFood();
+        }
+
+        function draw() {
+            background(0);
+            textSize(30);
+            fill(255);
+            text("Score: " + score, WIDTH - 140, 40);
+            if (snakeFood.x == bodyParts[0].x && snakeFood.y == bodyParts[0].y) {
+                tempX = bodyParts[bodyParts.length - 1].x;
+                tempY = bodyParts[bodyParts.length - 1].y;
+                makeFood();
+                score++;
+            }
+            for (let i = bodyParts.length - 1; i >= 0; i--) {
+                bodyParts[i].render();
+                if (i > 0 && start) {
+                    if (bodyParts[i].x == bodyParts[0].x && bodyParts[i].y == bodyParts[0].y) {
+                        lose = true;
+                    }
+                    if (bodyParts[0].x >= WIDTH || bodyParts[0].x < 0 || bodyParts[0].y >= HEIGHT || bodyParts[0].y < 0) {
+                        lose = true;
+                    }
+                    bodyParts[i].x = bodyParts[i - 1].x;
+                    bodyParts[i].y = bodyParts[i - 1].y;
+
+                }
+            }
+            snakeFood.render();
+
+
+            if (right) {
+                bodyParts[0].x += scale;
+            }
+            if (left) {
+                bodyParts[0].x -= scale;
+            }
+            if (up) {
+                bodyParts[0].y -= scale;
+            }
+            if (down) {
+                bodyParts[0].y += scale;
+            }
+
+            if (lose) {
+                textAlign(CENTER);
+                fill(255);
+                textSize(60);
+                text("You Lose", WIDTH / 2, HEIGHT / 2 - 60);
+                textSize(40);
+                text("Push Space to Restart", WIDTH / 2, HEIGHT / 2 + 70);
+                text("Final Score: " + score, WIDTH / 2, HEIGHT / 2 + 20);
+                noLoop();
+            }
+
+        }
+
+        class snake {
+
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            render() {
+                fill(0, 255, 0);
+                rect(this.x, this.y, scale, scale);
+            }
+        }
+
+        class food {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.w = scale;
+                this.h = scale;
+            }
+
+            render() {
+                fill(255, 0, 0);
+                rect(this.x, this.y, this.w, this.h);
+            }
+        }
+
+        function makeFood() {
+            snakeFood = new food(round(random(1, 39)) * 20, round(random(1, 29)) * 20);
+            bodyParts.push(new snake(tempX, tempY));
+        }
+
+        function keyPressed() {
+            start = true;
+            if (keyCode == LEFT_ARROW && !right) {
+                left = true;
+                right = false;
+                up = false;
+                down = false;
+            }
+            if (keyCode == RIGHT_ARROW && !left) {
+                left = false;
+                right = true;
+                up = false;
+                down = false;
+            }
+            if (keyCode == UP_ARROW && !down) {
+                left = false;
+                right = false;
+                up = true;
+                down = false;
+            }
+            if (keyCode == DOWN_ARROW && !up) {
+                left = false;
+                right = false;
+                up = false;
+                down = true;
+            }
+            if (keyCode == 32 && lose) {
+                location.reload(true);
+            }
+        }
+    </script>
+</body>
+
+</html>
