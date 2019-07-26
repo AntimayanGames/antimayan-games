@@ -18,7 +18,7 @@ let m2 = parseFloat(minput.value);
 let rate = 1000;
 let click = document.getElementById("click");
 var block1, block2;
-var fps = 300;
+var fps = 60;
 var delta = 0;
 var interval = 1000/fps;
 var lastFrameMs = 0;
